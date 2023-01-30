@@ -26,3 +26,11 @@
         }
     6) 메서드 종료하기
         -return: 어떤 값을 반환하는데 사용하는 에약어
+
+3. 메서드 정의하기
+    1) 
+       반환형  메서드명   매개변수
+        int addNum(int num, int num2){
+            int result = num1 + num2;
+            return result;      //반환형을 입력해 주었으니 반환을 꼭 해주어야함.
+        }
