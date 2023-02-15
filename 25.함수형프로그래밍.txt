@@ -104,8 +104,8 @@
             -매개변수의 타입의 유추가 가능할 경우 타입 생략 가능
             -매개변수가 하나일 경우 괄호 생략 가능
             -바로 리턴하는 경우 중괄호 생략 가능  x -> x+10;
-    5) @FunctionalInterface
+    5) 매개변수가 두 개일 때
+       @FunctionalInterface
        public interface BiFunction<T,U,R> {
             R apply(T t, U u);
-       }
-       매개변수가 두 개일 때
+       }  
