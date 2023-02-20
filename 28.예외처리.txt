@@ -40,6 +40,33 @@
         } catch(Exception e) {
             try 블록 안에서 예외가 발생했을 때 예외를 처리하는 부분
         }
+        -하나의 try{} 블록에서 예외가 여러개 발생하는 경우
+            -각각의 예외를 따로 처리할 수도 있음
+                try{
+                    예외가 발생할 수 있는 코드 부분
+                } catch(FileNotFoundException e) {
+                    try 블록 안에서 예외가 발생했을 때 예외를 처리하는 부분
+                } catch(ClassNotFoundException e) {
+                    try 블록 안에서 예외가 발생했을 때 예외를 처리하는 부분
+                }
+            -예외를 묶어서 하나의 방법으로 처리할 수도 있음
+                try{
+                    예외가 발생할 수 있는 코드 부분
+                } catch(FileNotFoundException | ClassNotFoundException e) {
+                    try 블록 안에서 예외가 발생했을 때 예외를 처리하는 부분
+                }
+        -Exception 클래스를 활용하여 default 처리를 할 때 Exception 블록은 맨 마지막에 위치해야 함
+         ->순차적으로 실행이 되기때문에 Exception을 다른 예외 처리보다 앞에 두면 Exception만 실행이되고 
+           다음에 있는 예외처리들은 실행이 되지 않음(Exception은 모든 예외처리의 super class임)
+                try{
+                    예외가 발생할 수 있는 코드 부분
+                } catch(FileNotFoundException e) {
+                    try 블록 안에서 예외가 발생했을 때 예외를 처리하는 부분
+                } catch(ClassNotFoundException e) {
+                    try 블록 안에서 예외가 발생했을 때 예외를 처리하는 부분
+                } catch(Exception e) {
+                    try 블록 안에서 예외가 발생했을 때 예외를 처리하는 부분
+                }
     2) try ~ catch ~ finally 문
         -finally 블럭에서 파일을 닫거나 네트웍을 닫는 등의 리소스 해제 구현을 함
         -try{} 블럭이 수행되는 경우, finally{} 블럭은 항상 수행됨
@@ -59,3 +86,17 @@
         -(java 9부터 제공)리소스는 try() 외부에서 선언하고 변수만을 try(obj)와 같이 사용할 수 있음
         -해당 리소스 클래스가 AutoCloseable 인터페이스를 구현해야 함
             FileInputStream의 경우에는 AutoCloseable을 구현하고 있음
+
+6. 예외 처리 미루기
+    1) throws를 이용하면 예외가 발생할 수 있는 부분을 사용하는 쪽에서 예외를 처리할 수 있음
+
+7. 사용자 정의 예외 클래스 
+    1) 구현하기 
+        -자바에서 제공되는 예외 클래스외에 프로그래머가 직접 만들어야 하는 예외가 있을 수 있음
+        -기존 예외 클래스 중 가장 유사한 예외 클래스에서 상속받아 사용자 정의 예외 크래스를 만듦
+        -기본적으로 Exception 클래스를 상속받아 만들 수 있음
+    2) 예(Case)
+        -패스워드에 대한 예외 처리하기 
+            -비밀번호는 null일 수 없음
+            -비밀번호 길이는 8이상임
+            -비밀번호는 문자로만 이루어져서는 안됨(하나 이상의 숫자나 특수문자 포함)
