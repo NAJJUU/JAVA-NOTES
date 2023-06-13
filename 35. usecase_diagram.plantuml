@@ -1,0 +1,14 @@
+@startuml
+left to right direction
+actor 운영자 as g
+
+package OTTT {
+  usecase "작품 조회" as UC1
+  usecase "게시판 조회" as UC2
+  usecase "신고 조회" as UC3
+}
+
+g --> UC1
+g --> UC2
+g --> UC3
+@enduml

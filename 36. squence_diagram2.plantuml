@@ -1,0 +1,43 @@
+@startuml
+participant 운영자 
+participant "ADMIN" as c
+participant "DB" as s
+
+
+운영자 -> c : 주문조회
+activate c
+c --> s : 주문테이블 조회
+activate s
+
+s -> c : 테이블 조회 결과
+deactivate s 
+
+c -> 운영자 : 주문목록
+deactivate c
+
+운영자 -> c : 상품조회
+activate c
+c --> s : 상품테이블 조회
+activate s
+
+s -> c : 테이블 조회 결과
+deactivate s 
+
+c -> 운영자 : 상품목록
+deactivate c
+
+운영자 -> c : 고객조회
+activate c
+c --> s : 고객테이블 조회
+activate s
+
+s -> c : 테이블 조회 결과
+deactivate s 
+
+c -> 운영자 : 고객목록
+deactivate c
+
+
+
+
+@enduml
